@@ -8,7 +8,9 @@
 
 #import "WLButton.h"
 
+#define WLWindowWidth ([[UIScreen mainScreen] bounds].size.width)
 
+#define WLWindowHeight ([[UIScreen mainScreen] bounds].size.height)
 
 @implementation WLButton
 
@@ -78,7 +80,7 @@
         [UIView beginAnimations:@"move" context:nil];
         [UIView setAnimationDuration:0.3];
         [UIView setAnimationDelegate:self];
-        self.frame=CGRectMake(335.f,self.center.y-20, 40.f,40.f);
+        self.frame=CGRectMake(WLWindowWidth - 40.f,self.center.y-20, 40.f,40.f);
         //提交UIView动画
         [UIView commitAnimations];
     }else{//向左侧移动
@@ -103,3 +105,4 @@
     
 }
 @end
+

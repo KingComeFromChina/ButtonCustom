@@ -9,6 +9,11 @@
 #import "ViewController.h"
 
 #import "WLButton.h"
+
+#define WLWindowWidth ([[UIScreen mainScreen] bounds].size.width)
+
+#define WLWindowHeight ([[UIScreen mainScreen] bounds].size.height)
+
 @interface ViewController ()
 {
     UIView *tabBarView;
@@ -37,7 +42,7 @@
 {
     myButton = [WLButton buttonWithType:UIButtonTypeCustom];
     myButton.MoveEnable = YES;
-    myButton.frame = CGRectMake(335, 300, 40, 40);
+    myButton.frame = CGRectMake(WLWindowWidth - 40,WLWindowHeight - 40, 40, 40);
     
     //TabBar上按键图标设置
     [myButton setBackgroundImage:[UIImage imageNamed:@"submit_pressed"] forState:UIControlStateNormal];
