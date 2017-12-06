@@ -1,9 +1,9 @@
 //
 //  ViewController.m
-//  WLButtonDamo
+//  WLButtonDemo
 //
 //  Created by 王垒 on 16/9/6.
-//  Copyright © 2016年 King. All rights reserved.
+//  Copyright © 2016年 王垒. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -49,7 +49,7 @@
     
     [self.view addSubview:myButton];
     [self initButton];
-   
+    
 }
 
 
@@ -77,46 +77,47 @@
 - (void)btnTap:(WLButton *)sender {
     if (!sender.MoveEnabled) {
         if (!self.isExpanding) {// 初始未展开
-           CGAffineTransform angle = CGAffineTransformMakeRotation (0);
-        [UIView animateWithDuration:0.3 animations:^{// 动画开始
-            [sender setTransform:angle];
-        } completion:^(BOOL finished){// 动画结束
-            [sender setTransform:angle];
-             [myButton setBackgroundImage:[UIImage imageNamed:@"btn_quickoption_route"] forState:UIControlStateNormal];
-        }];
-        
-        [self showButtonsAnimated];
-        
-        self.isExpanding = YES;
-    } else {// 已展开
-        CGAffineTransform unangle = CGAffineTransformMakeRotation (0);
-        [UIView animateWithDuration:0.3 animations:^{// 动画开始
-            [sender setTransform:unangle];
-        } completion:^(BOOL finished){// 动画结束
-            [sender setTransform:unangle];
-            [myButton setBackgroundImage:[UIImage imageNamed:@"submit_pressed"] forState:UIControlStateNormal];
-        }];
-        
-       [self hideButtonsAnimated];
-        
-        self.isExpanding = NO;
-    }
+            CGAffineTransform angle = CGAffineTransformMakeRotation (0);
+            [UIView animateWithDuration:0.3 animations:^{// 动画开始
+                [sender setTransform:angle];
+            } completion:^(BOOL finished){// 动画结束
+                [sender setTransform:angle];
+                [myButton setBackgroundImage:[UIImage imageNamed:@"btn_quickoption_route"] forState:UIControlStateNormal];
+            }];
+            
+            [self showButtonsAnimated];
+            
+            self.isExpanding = YES;
+        } else {// 已展开
+            CGAffineTransform unangle = CGAffineTransformMakeRotation (0);
+            [UIView animateWithDuration:0.3 animations:^{// 动画开始
+                [sender setTransform:unangle];
+            } completion:^(BOOL finished){// 动画结束
+                [sender setTransform:unangle];
+                [myButton setBackgroundImage:[UIImage imageNamed:@"submit_pressed"] forState:UIControlStateNormal];
+            }];
+            
+            [self hideButtonsAnimated];
+            
+            self.isExpanding = NO;
+        }
     }
 }
 
 // 点击按钮1的响应
 - (void)btn1Tap {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提示" message:@"学弟，跳槽吧" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"" message:@"打开简书，关注王垒iOS" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
     [av show];
+    
+    
 }
 
 // 点击按钮2的响应
 - (void)btn2Tap {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提示" message:@"工资太低了" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"" message:@"Open the book, Jane attention Wang Lei iOS" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [av show];
     
 }
-
 
 // 展开按钮
 - (void)showButtonsAnimated {
@@ -125,6 +126,9 @@
     float x = [myButton center].x;
     float endY = y;
     float endX = x;
+    
+    
+    
     for (int i = 0; i < [self.buttonArray count]; ++i) {
         UIButton *button = [self.buttonArray objectAtIndex:i];
         // 最终坐标
@@ -260,7 +264,7 @@
 
 - (void)buttonClicked:(id)sender
 {
-    NSLog(@"%ld",[sender tag]);
+    NSLog(@"%ld",(long)[sender tag]);
     
 }
 
@@ -274,3 +278,4 @@
     [super viewDidAppear:animated];
 }
 @end
+
